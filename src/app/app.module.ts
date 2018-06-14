@@ -7,11 +7,15 @@ import initFrappe from "../frappe";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { BillingPage } from '../pages/billing/billing';
+import { SupplierPage } from '../pages/supplier/supplier';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    BillingPage,
+    SupplierPage
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,9 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    BillingPage,
+    SupplierPage
   ],
   providers: [
     StatusBar,
