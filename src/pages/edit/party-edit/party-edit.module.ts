@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SupplierPage } from './supplier';
+import { PartyEditPage } from './party-edit';
 
 @NgModule({
   declarations: [
-    SupplierPage,
+    PartyEditPage,
   ],
   imports: [
-    IonicPageModule.forChild(SupplierPage),
+    IonicPageModule.forChild(PartyEditPage),
   ],
 })
-export class SupplierPageModule {}
+export class PartyEditPageModule {}

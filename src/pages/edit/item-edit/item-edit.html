@@ -1,0 +1,73 @@
+<!--
+  Generated template for the ItemEditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Item-Edit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+  <ion-item *ngIf="valid">
+    <ion-label color="col1" floating>Name</ion-label>
+    <ion-input type="text" value="{{item_name}}" clearInput [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="!valid">
+    <ion-label color="danger" floating>Name</ion-label>
+    <ion-input type="text" clearInput [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-list radio-group>
+    <ion-list-header>
+      Unit
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Kg</ion-label>
+      <ion-radio value="kg" checked="{{item_unit[0]}}" (ionSelect)="unit_selected('Kg')"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gram</ion-label>
+      <ion-radio value="gram" checked="{{item_unit[1]}}" (ionSelect)="unit_selected('Gram')"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hour</ion-label>
+      <ion-radio value="hour" checked="{{item_unit[2]}}" (ionSelect)="unit_selected('Hour')"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Day</ion-label>
+      <ion-radio value="day" checked="{{item_unit[3]}}" (ionSelect)="unit_selected('Day')"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-item *ngIf="valid2">
+    <ion-label color="primary" floating>Rate</ion-label>
+    <ion-input value="{{item_rate}}" type="text" clearInput [(ngModel)]="rate"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="!valid2">
+    <ion-label color="danger" floating>Rate</ion-label>
+    <ion-input type="text" clearInput [(ngModel)]="rate"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Description</ion-label>
+    <ion-input value={{item_description}} type="text" clearInput [(ngModel)]="description"></ion-input>
+  </ion-item>
+
+  <div style="padding:10px;text-align:center">
+    <button round color="col1" ion-button (click)="item_done()">Save</button>
+  </div>
+
+</ion-list>
+</ion-content>

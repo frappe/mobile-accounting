@@ -7,15 +7,21 @@ import initFrappe from "../frappe";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { BillingPage } from '../pages/billing/billing';
-import { SupplierPage } from '../pages/supplier/supplier';
+import { PartyInsertPage } from '../pages/insert/party-insert/party-insert';
+import { ListPage } from '../pages/list/list';
+import { PartyEditPage } from '../pages/edit/party-edit/party-edit';
+import { ItemEditPage } from '../pages/edit/item-edit/item-edit';
+import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    BillingPage,
-    SupplierPage
+    PartyInsertPage,
+    ListPage,
+    PartyEditPage,
+    ItemInsertPage,
+    ItemEditPage
   ],
   imports: [
     BrowserModule,
@@ -25,8 +31,11 @@ import { SupplierPage } from '../pages/supplier/supplier';
   entryComponents: [
     MyApp,
     HomePage,
-    BillingPage,
-    SupplierPage
+    PartyInsertPage,
+    ListPage,
+    PartyEditPage,
+    ItemInsertPage,
+    ItemEditPage
   ],
   providers: [
     StatusBar,

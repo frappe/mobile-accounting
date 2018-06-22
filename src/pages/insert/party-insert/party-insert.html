@@ -1,39 +1,25 @@
 <!--
-  Generated template for the SupplierPage page.
+  Generated template for the CustomerEditPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Supplier</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-title>Party-Insert</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  <h2>Customers:</h2>
-  <ion-item *ngFor="let d of partylist1">
-      <button color="col2" ion-button (click)="add_supplier(name)">{{d}}</button>
-	</ion-item>
-  <h2>Suppliers:</h2>
-  <ion-item *ngFor="let d of partylist2">
-      <button color="col2" ion-button (click)="add_supplier(name)">{{d}}</button>
-	</ion-item>
   <ion-item *ngIf="valid">
     <ion-label color="col1" floating>Name</ion-label>
-    <ion-input type="text" clearInput [(ngModel)]="name"></ion-input>
+    <ion-input type="text" value="{{cust_name}}" clearInput [(ngModel)]="name"></ion-input>
   </ion-item>
   <ion-item *ngIf="!valid">
     <ion-label color="danger" floating>Name</ion-label>
     <ion-input type="text" clearInput [(ngModel)]="name"></ion-input>
   </ion-item>
-  <!-- <ion-item *ngIf="signup">
-  <ion-label floating>First Name</ion-label>
-  <ion-input type="text" id="first_name" [(ngModel)]="first_name"></ion-input>
-</ion-item> -->
 <ion-list>
 
   <ion-item padding>
@@ -49,6 +35,6 @@
 </ion-list>
 
 <div style="padding:10px;text-align:center">
-  <button round color="col1" ion-button (click)="supplier_done()">Done</button>
+  <button round color="col1" ion-button (click)="party_done()">Save</button>
 </div>
 </ion-content>

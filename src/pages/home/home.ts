@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Storage } from '@ionic/storage';
 import fetch from 'node-fetch';
 
-import { BillingPage } from '../billing/billing';
+//import { SupplierPage } from '../supplier/supplier';
 
 @Component({
   selector: 'page-home',
@@ -12,9 +12,5 @@ import { BillingPage } from '../billing/billing';
 export class HomePage {
 
 	constructor(public navCtrl: NavController) { };
-
-  billhome(){
-      this.navCtrl.push(BillingPage);
-  }
 
 }
