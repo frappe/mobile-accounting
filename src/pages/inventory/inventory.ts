@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
-import { AddPage } from '../add/add';
 @IonicPage()
 @Component({
 	selector: 'page-inventory',
 	templateUrl: 'inventory.html',
 })
 export class InventoryPage {
-	addPressed: int=0;
-	ind: int=0;
+	title: string ="";
+	stock: string ="";
+	addPressed: number=0;
+	ind: number=0;
 	public items = [];
 	addButtonPane: string = "addPaneClose";
 	addButton: string = "addButtonClose";
@@ -25,7 +26,7 @@ export class InventoryPage {
 			this.addButton = 'addButtonOpen';
 			this.addPressed=1;
 		}
-		else if(this.addPressed==1){
+		else if(this.addPressed==1 && (this.title != "" && this.stock != "")){
 			let newItem = {
 				title: this.title,
 				stock: this.stock
@@ -34,7 +35,7 @@ export class InventoryPage {
 			this.addPressed=0;
 			this.close();
 		}
-		else if(this.addPressed==2){
+		else if(this.addPressed==2 && (this.title != "" && this.stock != "")){
 			let newItem = {
 				title: this.title,
 				stock: this.stock
