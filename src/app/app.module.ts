@@ -12,6 +12,8 @@ import { ListPage } from '../pages/list/list';
 import { PartyEditPage } from '../pages/edit/party-edit/party-edit';
 import { ItemEditPage } from '../pages/edit/item-edit/item-edit';
 import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
+import { SQLite } from '@ionic-native/sqlite';
+import { Toast } from '@ionic-native/toast';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+	{provide: ErrorHandler, useClass: IonicErrorHandler},
+	SQLite,
+	Toast
   ]
 })
 export class AppModule {
