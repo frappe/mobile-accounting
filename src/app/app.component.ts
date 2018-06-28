@@ -24,7 +24,7 @@ export class MyApp {
     this.platform= platform;
     this.platform.ready().then( () => {
       this.statusBar.overlaysWebView(true);
-      this.statusBar.backgroundColorByHexString('#00e3c6');
+      this.statusBar.backgroundColorByHexString('#6200ee');
     });
   }
   initializeApp() {
