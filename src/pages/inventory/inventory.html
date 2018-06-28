@@ -1,0 +1,73 @@
+<ion-header>
+	<ion-navbar color="navbar">
+		<button ion-button menuToggle>
+			<ion-icon name="menu" color="white"></ion-icon>
+		</button>
+		<ion-title>Inventory</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only padding>
+				<ion-icon name="search" color="white"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="contents">
+
+	<ion-list>
+		<ion-item-sliding *ngFor="let item of items">
+			<ion-item>
+				<ion-avatar item-start>
+					<img src="assets/img/no_img.jpg">
+				</ion-avatar>
+				<h2 style="color: #444;">{{item.title}}</h2>
+				<p style="color: #9a9a9a;"> <ion-icon name="logo-dropbox" color="IoptionText"></ion-icon> {{item.stock}} items in stock</p>
+			</ion-item>
+			<ion-item-options side="right">
+				<button ion-button color="Ioption" padding (click)="edit(item)">
+					<ion-icon name="md-create"></ion-icon>
+				</button>
+			</ion-item-options>
+			<ion-item-options side="left">
+				<button ion-button color="danger" padding (click)="delete(item)">
+					<ion-icon name="trash"></ion-icon>
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+
+	<div [class]="addButtonPane">
+		<ion-toolbar class="addNav" color="navbar">
+			<ion-buttons left>
+				<button ion-button icon-only padding (click)=close()>
+					<ion-icon name="arrow-back"></ion-icon>
+				</button>
+			</ion-buttons>
+			<ion-title>Item Description</ion-title>
+			<ion-buttons end>
+				<button ion-button icon-only padding (click)=add()>
+					<ion-icon name="checkmark"></ion-icon>
+				</button>
+			</ion-buttons>
+		</ion-toolbar>
+		
+		<ion-avatar item-start class="addIcon">
+			<img src="assets/img/no_img.jpg">
+		</ion-avatar>
+
+		<div style="padding: 15px 35px 15px 15px;">
+			<ion-card class="addFields">
+				<ion-label>Title</ion-label>
+				<ion-input type="text" [(ngModel)]="title" class="addEntry"></ion-input>
+			</ion-card>
+			<ion-card class="addFields">
+				<ion-label>Stock</ion-label>
+				<ion-input type="text" [(ngModel)]="stock" class="addEntry"></ion-input>
+			</ion-card>
+		</div>
+	</div>
+	<div [class]="addButton" (click)="add()">
+		<ion-icon name="add" color="white"></ion-icon>
+	</div>
+
+</ion-content>

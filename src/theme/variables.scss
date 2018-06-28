@@ -38,7 +38,15 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  white:      #fff,
+  navbar: (
+      base: #6200ee,
+      contrast: #fff
+    ),
+  Ioption: #898891,
+  IoptionText: #9a9a9a,
+  toolColor: #f5f5f5
 );
 
 
