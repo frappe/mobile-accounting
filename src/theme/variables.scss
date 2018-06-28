@@ -38,7 +38,10 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  col1:       #7EB9F8,
+  col2:       #00E9B7,
+  col3:       #66BBA5	
 );
 
 
@@ -86,3 +89,10 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+$toolbar-md-title-text-color: #fff;
+$toolbar-ios-title-text-color: #fff;
+$toolbar-wp-title-text-color: #fff;
+
+$toolbar-background: #111934;

@@ -7,11 +7,21 @@ import initFrappe from "../frappe";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { PartyInsertPage } from '../pages/insert/party-insert/party-insert';
+import { ListPage } from '../pages/list/list';
+import { PartyEditPage } from '../pages/edit/party-edit/party-edit';
+import { ItemEditPage } from '../pages/edit/item-edit/item-edit';
+import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    PartyInsertPage,
+    ListPage,
+    PartyEditPage,
+    ItemInsertPage,
+    ItemEditPage
   ],
   imports: [
     BrowserModule,
@@ -20,7 +30,12 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    PartyInsertPage,
+    ListPage,
+    PartyEditPage,
+    ItemInsertPage,
+    ItemEditPage
   ],
   providers: [
     StatusBar,

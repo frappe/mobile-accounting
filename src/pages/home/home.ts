@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import fetch from 'node-fetch';
+
+//import { SupplierPage } from '../supplier/supplier';
 
 @Component({
   selector: 'page-home',
@@ -7,6 +11,6 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-	constructor(public navCtrl: NavController) { }
+	constructor(public navCtrl: NavController) { };
 
 }

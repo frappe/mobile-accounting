@@ -19,13 +19,12 @@ export default async function initFrappe(serv) {
 	  frappe
 	});
 	frappe.fetch = fetch.bind();
-	
+
 	frappe.init();
 	frappe.registerLibs(common);
 	frappe.registerModels(models, 'client');
 	frappe.db = await new HTTPClient({server: server});
 	const socket = io.connect('http://' + server);
 	frappe.db.bindSocketClient(socket);
-	
 	frappe.docs = new Observable();
 }
