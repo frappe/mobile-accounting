@@ -1,41 +1,148 @@
-.list-avatar-page {
-	background-color: #fafafa;
-	ion-note {
-		font-size: 12px;
-		align-self: flex-start;
-		margin-top: 14px;
-	}
-	ion-item{
-		min-height: 80px;
-		background-color: #fafafa;
-	}
+.contents{
+	background-color: #ecedef;
 }
 
-.addDiv{
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	height: 80px;
-	background-color: #fafafa;
-	opacity: 0.6;
+.addItems{
+	background-color: #151515;
 }
-.addButton{
+.addEntry{
+	color: #fff;
+	border: 0;
+}
+.addIcon{
+	background-color: #151515;
+	width: 130px;
+	height: 130px;
+	margin: 25px auto;
+	border: 2px solid #333; 
+	border-radius: 65px;
+	overflow: hidden;
+}
+.addFields{
+	position: relative;
+	float: left;
+	background-color: #151515;
+	width: 100%;
+	height: 50px;
+	border: 2px solid #333;  
+	border-radius: 50px;
+	padding: 0 10px;
+	margin-bottom: 10px; 
+	overflow: hidden;
+}
+.addFields ion-label{
+	position: absolute;
+	margin-left: 10px;
+	width: 50px;
+	top: 0;
+}
+.addFields ion-input{
+	position: absolute;
+	margin-left: 10px;
+	padding-left: 50px; 
+	max-width: 80%;
+	top: 0;
+}
+
+.addNav{
+	border-radius: 15px 15px 0 0;
+	margin-top: -2px;
+	text-align: center;
+}
+
+.addPaneClose{
+	position: fixed;
+	background-color: #222;
+	z-index: 999;
+	width: 0;
+	height: 0;
+	bottom: 0;
+	left: 50%;
+	opacity: 0;
+	margin: 0 0 30px 0;
+	border-radius: 45px;
+	box-shadow: 0px 0px 8px 2px #888888;
+	overflow: none;
+	transition: all 0.3s ease;
+	
+}
+.addPaneOpen{
 	position: fixed;
 	color: #ecedef;
-	background-color: #322f3e;
-	width: 80%;
+	z-index: 999;
+	background-color: #222;
+	width: 75%;
+	height: 75%;
+	bottom: 0;
+	left: 50%;
+	opacity: 1;
+	font-size: 16px;
+	margin: 0 0 -15px -37.5%;
+	border-radius: 15px;
+	box-shadow: 0px 0px 8px 2px #888888;
+	overflow: none;
+	transition: all 0.3s ease;
+}
+
+.addButtonClose{
+	position: fixed;
+	color: #ecedef;
+	background-color: #222;
+	z-index: 1000;
+	width: 45px;
+	height: 45px;
+	bottom: 0;
+	left: 50%;
+	display: default;
+	font-size: 16px;
+	margin: 0 0 30px -22.5px;
+	border-radius: 45px;
+	box-shadow: 0px 0px 8px 2px #888888;
+	padding-top: 1px;
+	overflow: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 45px;
+	transition: 0.3s ease;
+}
+.addButtonOpen{
+	position: fixed;
+	color: #ecedef;
+	background-color: #43A047;
+	z-index: 1000;
+	width: 45px;
 	height: 45px;
 	bottom: 0;
 	left: 50%;
 	font-size: 16px;
-	margin: 0 0 30px -40%;
-	border-radius: 2px;
-	box-shadow: 0px 0px 8px 2px #888888;
+	margin: 0 0 30px -22.5px;
+	border-radius: 45px;
+	box-shadow: 0px 0px 10px 1px #111;
+	padding-top: 1px;
+	overflow: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 45px;
+	transition: .3s ease;
 }
-
-.toolLabel{
-	display: block; 
-	font-size: 10px; 
-	color: #444; 
-	margin-top: 5px;
+.addButtonOpenEdit{
+	position: fixed;
+	color: #ecedef;
+	background-color: #43A047;
+	z-index: 1000;
+	width: 45px;
+	height: 45px;
+	bottom: 0;
+	display: none;
+	left: 50%;
+	font-size: 16px;
+	margin: 0 0 30px -22.5px;
+	border-radius: 45px;
+	box-shadow: 0px 0px 10px 1px #111;
+	padding-top: 1px;
+	overflow: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 45px;
+	transition: .3s ease;
 }
