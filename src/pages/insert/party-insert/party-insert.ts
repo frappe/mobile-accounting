@@ -1,3 +1,4 @@
+import { DatabaseProvider } from './../../../providers/database/database';
 import { Component,Input } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController,ToastController  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -20,62 +21,56 @@ export class PartyInsertPage {
   list:Array<String>
   valid:Boolean;
   title:any;
-  @Input() name;
-  customer:Boolean;
-  supplier:Boolean;
-  frappe:any;
-  act_customer:any;
-  act_supplier:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  party = {};
+  //frappe:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,private databaseProvider: DatabaseProvider) {
     this.valid = true;
     this.title = this.navParams.get('title');
   }
 
   async ionViewDidLoad() {
-    console.log('ionViewDidLoad CustomerEditPage');
-    this.frappe = (<any>window).frappe;
+    console.log('ionViewDidLoad PartyInsertPage');
+    //this.frappe = (<any>window).frappe;
   }
 
   party_done(){
-    if(!this.name)
-    {
+    if(!this.party['name']){
       this.valid = false;
     }
-    else
-    {
+    else{
       this.valid = true;
     }
-    if(!this.customer && !this.supplier)
+    if(this.valid)
     {
-      this.show_toast("Select atleast one of the options");
+      console.log("Success");
+      this.addParty();
     }
+  }
+
+  addParty() {
+    // if(this.customer) this.act_customer=1; else this.act_customer = 0;
+    // if(this.supplier) this.act_supplier=1; else this.act_supplier = 0;
+    if(this.title == 'Customers')
+      this.databaseProvider.addParty(this.party['name'],1,0)
+      .then(data => {
+        this.navigate();
+      });
     else
-    {
-      if(this.valid)
-      {
-        console.log("Success");
-        this.saveParty();
-      }
-    }
-  }
-
-  async saveParty() {
-    if(this.customer) this.act_customer=1; else this.act_customer = 0;
-    if(this.supplier) this.act_supplier=1; else this.act_supplier = 0;
-    let temp_data = {"name": this.name,"customer":this.act_customer,"supplier":this.act_supplier };
-    console.log(temp_data);
-    await this.frappe.db.insert("Party",temp_data);
-    this.navigate();
+      this.databaseProvider.addParty(this.party['name'],0,1)
+      .then(data => {
+        this.navigate();
+      });
+    //await this.frappe.db.insert("Party",temp_data);
   }
 
 
-  updateCustomer(){
-    console.log(this.customer);
-  }
-
-  updateSupplier(){
-    console.log(this.supplier);
-  }
+  // updateCustomer(){
+  //   console.log(this.customer);
+  // }
+  //
+  // updateSupplier(){
+  //   console.log(this.supplier);
+  // }
 
   navigate(){
     // here data to send to billing page;

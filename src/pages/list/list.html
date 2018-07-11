@@ -17,9 +17,9 @@
 <ion-content padding>
   <ion-item *ngFor="let d of list">
     <!-- <button color="col1" ion-button (click)="popup(d)">{{d}}</button> -->
-    <h2 style = "color:#488aff">{{d}}</h2>
+    <h2 style = "color:#488aff">{{d.name}}</h2>
       <ion-icon item-end></ion-icon>
-      <button ion-button clear icon-only item-end ion-button (click)="edit(d)">
+      <button ion-button clear icon-only item-end ion-button (click)="edit(d.name)">
         <ion-icon name="md-create" color="Ioption"></ion-icon>
       </button>
   </ion-item>
