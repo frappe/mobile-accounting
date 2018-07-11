@@ -10,7 +10,6 @@ import fetch from 'node-fetch';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-	constructor(public navCtrl: NavController) { };
-
+	constructor(public navCtrl: NavController) {
+  }
 }

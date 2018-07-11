@@ -3,7 +3,14 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import initFrappe from "../frappe";
+
+import { SQLite } from '@ionic-native/sqlite';
+import { SQLitePorter } from '@ionic-native/sqlite-porter';
+
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule } from '@angular/http';
+
+import { DatabaseProvider } from '../providers/database/database';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -12,6 +19,7 @@ import { ListPage } from '../pages/list/list';
 import { PartyEditPage } from '../pages/edit/party-edit/party-edit';
 import { ItemEditPage } from '../pages/edit/item-edit/item-edit';
 import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +33,9 @@ import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,11 +50,11 @@ import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    SQLite,
+    SQLitePorter,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DatabaseProvider
   ]
 })
 export class AppModule {
-	constructor() {
-		initFrappe();
-	};
 }

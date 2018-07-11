@@ -1,3 +1,4 @@
+import { DatabaseProvider } from './../../../providers/database/database';
 import { Component,Input } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController,ToastController  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -16,32 +17,29 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: 'item-insert.html',
 })
 export class ItemInsertPage {
-  unit:any;
   valid:Boolean;
   valid2:Boolean;
-  @Input() name;
-  @Input() rate;
-  @Input() description;
-  frappe:any;
+  item = {};
+  //frappe:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
     this.valid = true;
     this.valid2 = true;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ItemEditPage');
-    this.frappe = (<any>window).frappe;
+    //this.frappe = (<any>window).frappe;
   }
 
   item_done(){
-    if(!this.name){
+    if(!this.item.name){
       this.valid = false;
     }
     else{
       this.valid = true;
     }
-    if(!this.rate){
+    if(!this.item.rate){
       this.valid2 = false;
     }
     else{
@@ -49,18 +47,26 @@ export class ItemInsertPage {
       this.valid2 = true;
     }
     if(this.valid && this.valid2){
-      console.log(this.description);
-      this.saveItem();
+      console.log(this.item.description);
+      this.addItem();
     }
   }
 
   unit_selected(temp){
-    this.unit = temp;
+    this.item.unit = temp;
   }
 
-  async saveItem(){
-    let temp = {'name':this.name,'description':this.description,'unit':this.unit,'rate':this.rate};
-    await this.frappe.db.insert('Item',temp);
-    this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
+  // saveItem(){
+  //   let temp = {'name':this.name,'description':this.description,'unit':this.unit,'rate':this.rate};
+  //   await this.frappe.db.insert('Item',temp);
+  //   this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
+  // }
+
+  addItem() {
+    this.databaseProvider.addItem(this.item['name'], this.item['description'], this.item['unit'],this.item['rate'])
+    .then(data => {
+       this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
+    });
+    this.item = {};
   }
 }

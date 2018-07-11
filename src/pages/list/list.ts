@@ -1,6 +1,7 @@
+import { DatabaseProvider } from './../../providers/database/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+
 /**
  * Generated class for the ListPage page.
  *
@@ -18,46 +19,71 @@ import { ItemInsertPage } from '../insert/item-insert/item-insert';
   templateUrl: 'list.html',
 })
 export class ListPage {
-  list:Array<String>;
+  list = [];
   pageTitle:any;
   docname:any;
-  frappe:any;
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams) {
+  //frappe:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
     this.pageTitle = this.navParams.get('pageTitle');
     this.docname = this.navParams.get('docname');
-    this.loadlist();
+    this.databaseProvider.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.loadlist();
+      }
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPage');
   }
 
-  async loadlist(){
-    this.frappe = (<any>window).frappe;
-    this.list = [''];
+  loadlist(){
+    //this.frappe = (<any>window).frappe;
     if(this.pageTitle == 'Customers'){
-      var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{customer:['like','1']}});
+      this.loadCustomersData();
+      //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{customer:['like','1']}});
     }
     else if(this.pageTitle == 'Suppliers'){
-      var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{supplier:['like','1']}});
+      this.loadSuppliersData();
+      //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{supplier:['like','1']}});
     }
     else{
-      var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name']});
+      this.loadItemsData();
+      //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name']});
     }
-    for(var i=0;i<temp.length;i++)
-    {
-      this.list.push(temp[i]['name']);
-    }
-    this.list.shift();
   }
 
-  async edit(curr_name) {
+  loadItemsData() {
+    this.databaseProvider.getAllItems().then(data => {
+      this.list = data;
+    });
+  }
+
+  loadCustomersData() {
+    this.databaseProvider.getAllCustomers().then(data => {
+      this.list = data;
+    });
+  }
+
+  loadSuppliersData() {
+    this.databaseProvider.getAllSuppliers().then(data => {
+      this.list = data;
+    });
+  }
+
+  edit(curr_name) {
     console.log(curr_name,this.docname);
-    if(this.docname == 'Party')
+    if(this.docname == 'Party'){
       this.navCtrl.push(PartyEditPage,{'cust_name':curr_name,'title':this.pageTitle});
+    }
     else if(this.docname == 'Item'){
-      let temp = await this.frappe.db.get('Item',curr_name);
-      this.navCtrl.push(ItemEditPage,{'item_name':curr_name,'item_description':temp['description'],'item_rate':temp['rate'],'item_unit':temp['unit']});
+      //let temp = await this.frappe.db.get('Item',curr_name);
+      this.databaseProvider.getItem(curr_name)
+      .then(data => {
+        let temp = data;
+        console.log(temp['rate']);
+        this.navCtrl.push(ItemEditPage,{'item_name':curr_name,'item_description':temp['description'],'item_rate':temp['rate'],'item_unit':temp['unit']});
+      });
     }
   }
 
