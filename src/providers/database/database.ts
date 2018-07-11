@@ -51,7 +51,7 @@ export class DatabaseProvider {
 // <------ Items ------->
 
   addItem(name,description,unit,rate) {
-    this.date = new Date();
+    this.date = JSON.stringify(new Date());
     let data = [this.owner,this.owner,this.date,this.date,name,description,unit,rate];
     console.log('insert data: ', data);
     return this.database.executeSql("INSERT INTO Item (owner,modifiedBy,creation,modified,name,description,unit,rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", data).then(res => {
@@ -105,7 +105,7 @@ export class DatabaseProvider {
 //  <------- Party ------->
 
   addParty(name,customer,supplier) {
-    this.date = new Date();
+    this.date = JSON.stringify(new Date());
     let data = [this.owner,this.owner,this.date,this.date,name,customer,supplier];
     console.log('insert data: ', data);
     return this.database.executeSql("INSERT INTO Party (owner,modifiedBy,creation,modified,name,customer,supplier) VALUES (?, ?, ?, ?, ?, ?, ?)", data).then(res => {

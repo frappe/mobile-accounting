@@ -28,32 +28,32 @@ export class ItemInsertPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ItemEditPage');
+    console.log('ionViewDidLoad ItemInsertPage');
     //this.frappe = (<any>window).frappe;
   }
 
   item_done(){
-    if(!this.item.name){
+    if(!this.item['name']){
       this.valid = false;
     }
     else{
       this.valid = true;
     }
-    if(!this.item.rate){
+    if(!this.item['rate']){
       this.valid2 = false;
     }
     else{
-      if(this.rate)
+      if(this.item['rate'])
       this.valid2 = true;
     }
     if(this.valid && this.valid2){
-      console.log(this.item.description);
+      console.log(this.item['description']);
       this.addItem();
     }
   }
 
   unit_selected(temp){
-    this.item.unit = temp;
+    this.item['unit'] = temp;
   }
 
   // saveItem(){
