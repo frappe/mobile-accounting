@@ -85,5 +85,6 @@
     <plugin name="uk.co.workingedge.cordova.plugin.sqliteporter" spec="^1.0.5" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.3" />
     <allow-navigation href="http://192.168.0.105:8100" />
-    <engine name="android" spec="~7.0.0" />
+    <engine name="android" spec="~7.1.0" />
+    <allow-navigation href="http://192.168.43.166:8101" />
 </widget>
