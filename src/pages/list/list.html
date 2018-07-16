@@ -17,24 +17,24 @@
 <ion-content class="contents">
   <ion-list no-lines>
   	<ion-item-sliding *ngFor="let item of list" class="list-item">
-  		<ion-item>
-  			<ion-avatar item-start>
+  		<ion-item class="list-item-content">
+  			<ion-avatar item-start style="padding-left: 10px">
   				<img src="assets/icon/alert.jpg">
   			</ion-avatar>
   			<h2 style="color: #444; font-size: 18px">{{item.name}}</h2>
   			<p style="color: #9a9a9a;">{{item.description}}</p>
-  			<div item-end style="padding: 0 0 0 30px; text-align: right;">
+  			<div *ngIf="valid" item-end style="padding: 0 0 0 30px; text-align: right;">
   				<p style="color: #444; font-size: 19px">₹{{item.rate}}</p>
   				<p style="color: #9a9a9a; font-size: 14px">per {{item.unit}}</p>
   			</div>
   		</ion-item>
   		<ion-item-options side="right">
-  			<button ion-button color="green" style="width: 60px" (click)="edit(item.name)">
+  			<button ion-button color="green" style="width: 60px; font-size: 18px; padding-top: 5px;" (click)="edit(item.name)">
   				<ion-icon name="md-create"></ion-icon>
   			</button>
   		</ion-item-options>
   		<ion-item-options side="left">
-  			<button ion-button color="danger" style="width: 60px" (click)="delete(item.name)">
+  			<button ion-button color="danger" style="width: 60px; font-size: 18px; padding-top: 5px;" (click)="delete(item.name)">
   				<ion-icon name="trash"></ion-icon>
   			</button>
   		</ion-item-options>
