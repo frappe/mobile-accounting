@@ -5,26 +5,43 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar hideBackButton>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>{{pageTitle}}</ion-title>
-  </ion-navbar>
+	<ion-navbar hideBackButton>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>{{pageTitle}}</ion-title>
+	</ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  <ion-item *ngFor="let d of list">
-    <!-- <button color="col1" ion-button (click)="popup(d)">{{d}}</button> -->
-    <h2 style = "color:#488aff">{{d.name}}</h2>
-      <ion-icon item-end></ion-icon>
-      <button ion-button clear icon-only item-end ion-button (click)="edit(d.name)">
-        <ion-icon name="md-create" color="Ioption"></ion-icon>
-      </button>
-  </ion-item>
+<ion-content class="contents">
+  <ion-list no-lines>
+  	<ion-item-sliding *ngFor="let item of list" class="list-item">
+  		<ion-item>
+  			<ion-avatar item-start>
+  				<img src="assets/icon/alert.jpg">
+  			</ion-avatar>
+  			<h2 style="color: #444; font-size: 18px">{{item.name}}</h2>
+  			<p style="color: #9a9a9a;">{{item.description}}</p>
+  			<div item-end style="padding: 0 0 0 30px; text-align: right;">
+  				<p style="color: #444; font-size: 19px">₹{{item.rate}}</p>
+  				<p style="color: #9a9a9a; font-size: 14px">per {{item.unit}}</p>
+  			</div>
+  		</ion-item>
+  		<ion-item-options side="right">
+  			<button ion-button color="green" style="width: 60px" (click)="edit(item.name)">
+  				<ion-icon name="md-create"></ion-icon>
+  			</button>
+  		</ion-item-options>
+  		<ion-item-options side="left">
+  			<button ion-button color="danger" style="width: 60px" (click)="delete(item.name)">
+  				<ion-icon name="trash"></ion-icon>
+  			</button>
+  		</ion-item-options>
+  	</ion-item-sliding>
+  </ion-list>
   <br>
   <div style = "text-align:center;">
-    <button color="col3" ion-button (click)="insert()">+</button>
+  	<button class="add" color="col3" ion-button (click)="insert()"><ion-icon name="add"></ion-icon></button>
   </div>
 </ion-content>

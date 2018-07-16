@@ -29,6 +29,12 @@ export class MyApp {
       { title: 'Items', component: ListPage, docname:'Item' }
     ];
 
+    this.platform= platform;
+    this.platform.ready().then( () => {
+      this.statusBar.overlaysWebView(true);
+      this.statusBar.backgroundColorByHexString('#212121');
+    });
+
   }
 
   initializeApp() {

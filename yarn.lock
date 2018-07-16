@@ -84,9 +84,9 @@
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/@ionic-native/sqlite/-/sqlite-4.9.1.tgz#40728acdba3585248d58d464b9237dff4aa608a4"
 
-"@ionic-native/status-bar@4.7.0":
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.7.0.tgz#f292bf67c2d5fef43b1fc7b442f5bc75139cc8e3"
+"@ionic-native/status-bar@^4.7.0":
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.9.2.tgz#92bbf7e5a8946cbf02dbed6dec29108f6b71d7ad"
 
 "@ionic/app-scripts@3.1.9":
   version "3.1.9"
@@ -1239,6 +1239,10 @@ cordova-plugin-ionic-webview@^1.2.1:
 cordova-plugin-splashscreen@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-5.0.2.tgz#747e74f56e201cd585bc62d14bca19f6867ff1ed"
+
+cordova-plugin-statusbar@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-statusbar/-/cordova-plugin-statusbar-2.4.2.tgz#fc1fbdc0d8d7033a7e8e1f1f7ff167ac9bd4faf6"
 
 cordova-plugin-whitelist@^1.3.3:
   version "1.3.3"
