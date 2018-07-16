@@ -55,7 +55,7 @@ export class PartyInsertPage {
       .then(data => {
         this.navigate();
       });
-    else
+    else if(this.title == 'Suppliers')
       this.databaseProvider.addParty(this.party['name'],0,1)
       .then(data => {
         this.navigate();

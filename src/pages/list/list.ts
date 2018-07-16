@@ -22,8 +22,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
    list = [];
    pageTitle:any;
    docname:any;
+   valid:Boolean;
   //frappe:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
+    this.valid=true;
     this.pageTitle = this.navParams.get('pageTitle');
     this.docname = this.navParams.get('docname');
     this.databaseProvider.getDatabaseState().subscribe(rdy => {
@@ -41,10 +43,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     //this.frappe = (<any>window).frappe;
     if(this.pageTitle == 'Customers'){
       this.loadCustomersData();
+      this.valid=false;
       //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{customer:['like','1']}});
     }
     else if(this.pageTitle == 'Suppliers'){
       this.loadSuppliersData();
+      this.valid=false;
       //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{supplier:['like','1']}});
     }
     else{
@@ -89,13 +93,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   delete(curr_name) {
     console.log(curr_name,this.docname);
     if(this.docname == 'Party'){
-      //this.navCtrl.push(PartyEditPage,{'cust_name':curr_name,'title':this.pageTitle});
+      this.databaseProvider.deleteParty(curr_name)
+      .then(data => {
+        this.loadCustomersData();
+      });
     }
     else if(this.docname == 'Item'){
       //await this.frappe.db.delete('Item',this.curr_name);
       this.databaseProvider.deleteItem(curr_name)
       .then(data => {
-        this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
+        this.loadItemsData();
       });
     }
   }
