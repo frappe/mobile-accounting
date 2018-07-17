@@ -17,12 +17,12 @@
   <ion-list>
   <ion-item *ngIf="valid">
     <ion-label color="col1" floating>Name</ion-label>
-    <ion-input type="text" value="{{cust_name}}" clearInput [(ngModel)]="name"></ion-input>
+    <ion-input type="text" value="{{cust_name}}" clearInput [(ngModel)]="item.name"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="!valid">
     <ion-label color="danger" floating>Name</ion-label>
-    <ion-input type="text" clearInput [(ngModel)]="name"></ion-input>
+    <ion-input type="text" clearInput [(ngModel)]="item.name"></ion-input>
   </ion-item>
 
   <ion-list radio-group>
@@ -52,16 +52,17 @@
   </ion-list>
   <ion-item *ngIf="valid2">
     <ion-label color="col1" floating>Rate</ion-label>
-    <ion-input type="text" clearInput [(ngModel)]="rate"></ion-input>
+    <ion-input type="text" clearInput [(ngModel)]="item.rate"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="!valid2">
     <ion-label color="danger" floating>Rate</ion-label>
-    <ion-input type="text" clearInput [(ngModel)]="rate"></ion-input>
+    <ion-input type="text" clearInput [(ngModel)]="item.rate"></ion-input>
   </ion-item>
 
-  <ion-item padding>
-    <ion-textarea placeholder="Enter a description" clearInput [(ngModel)]="description"></ion-textarea>
+  <ion-item>
+    <ion-label color="primary" floating>Description</ion-label>
+    <ion-input value={{item_description}} type="text" clearInput [(ngModel)]="item.description"></ion-input>
   </ion-item>
 
   <div style="padding:10px;text-align:center">

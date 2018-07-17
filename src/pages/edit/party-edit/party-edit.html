@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Customer-Edit</ion-title>
+    <ion-title>{{this.title}}-Edit</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,7 +20,7 @@
     <ion-label color="danger" floating>Name</ion-label>
     <ion-input type="text" clearInput [(ngModel)]="name"></ion-input>
   </ion-item>
-<ion-list>
+<!-- <ion-list>
 
   <ion-item padding>
     <ion-label>Customer</ion-label>
@@ -32,7 +32,7 @@
     <ion-checkbox [(ngModel)]="supplier" (ionChange)="updateSupplier()"></ion-checkbox>
   </ion-item>
 
-</ion-list>
+</ion-list> -->
 
 <div style="padding:10px;text-align:center">
   <button round color="col1" ion-button (click)="party_done()">Save</button>
