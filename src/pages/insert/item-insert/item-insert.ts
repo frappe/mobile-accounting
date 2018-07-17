@@ -25,6 +25,7 @@ export class ItemInsertPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
     this.valid = true;
     this.valid2 = true;
+    this.item['unit'] = 'Kg';
   }
 
   ionViewDidLoad() {
