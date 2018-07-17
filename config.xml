@@ -3,7 +3,7 @@
     <name>Mobile Accounting</name>
     <description>An Accounting app.</description>
     <author email="hello@erpnext.com" href="https://erpnext.com">Frappe Technologies Private Limited</author>
-    <content original-src="index.html" src="http://192.168.43.166:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -84,14 +84,5 @@
     <allow-navigation href="http://192.168.29.48:8100" />
     <plugin name="uk.co.workingedge.cordova.plugin.sqliteporter" spec="^1.0.5" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.3" />
-    <allow-navigation href="http://192.168.0.105:8100" />
-    <allow-navigation href="http://192.168.43.166:8101" />
-    <allow-navigation href="http://192.168.43.166:8100" />
-    <allow-navigation href="http://192.168.43.166:8102" />
-    <allow-navigation href="http://192.168.43.166:8103" />
-    <allow-navigation href="http://192.168.43.166:8104" />
-    <allow-navigation href="http://192.168.43.166:8105" />
-    <allow-navigation href="http://192.168.43.166:8106" />
-    <allow-navigation href="http://192.168.43.166:8107" />
     <engine name="android" spec="7.1.0" />
 </widget>
