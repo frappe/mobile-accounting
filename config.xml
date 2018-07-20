@@ -3,7 +3,7 @@
     <name>Mobile Accounting</name>
     <description>An Accounting app.</description>
     <author email="hello@erpnext.com" href="https://erpnext.com">Frappe Technologies Private Limited</author>
-    <content src="index.html" />
+    <content original-src="index.html"/>
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

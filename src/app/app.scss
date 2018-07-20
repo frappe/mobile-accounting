@@ -14,3 +14,87 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+.save{
+	position: fixed;
+	color: #ecedef;
+	background-color: #4caf50;
+	z-index: 1000;
+	width: 55px;
+	height: 55px;
+	bottom: 0;
+	left: 50%;
+	font-size: 18px;
+	margin: 0 0 30px -25px;
+	border-radius: 45px;
+	overflow: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 45px;
+	transition: .3s ease;
+}
+.contents{
+	background-color: #ecedef;
+}
+.list-item{
+	width: calc(100% - 30px);
+	margin: 13px 15px;
+	border-radius: 5px;
+	box-shadow: 0px 1px 1px 0px #888888;
+}
+.list-item-content{
+	width: 100%;
+	height: 100%;
+	padding: 4px;
+}
+.add{
+	position: fixed;
+	color: #ecedef;
+	background-color: #212121;
+	z-index: 1000;
+	width: 50px;
+	height: 50px;
+	bottom: 0;
+	left: 50%;
+	font-size: 18px;
+	margin: 0 0 30px -25px;
+	border-radius: 45px;
+	overflow: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 45px;
+	transition: .3s ease;
+}
+
+
+.addFields{
+	position: relative;
+	float: left;
+	background-color: #151515;
+	width: 100%;
+	height: 50px;
+	border: 2px solid #333;  
+	border-radius: 50px;
+	padding: 0 10px;
+	margin-bottom: 10px; 
+	overflow: hidden;
+}
+.addFields ion-label{
+	position: absolute;
+	margin-left: 10px;
+	width: 50px;
+	top: 0;
+}
+.addFields ion-input{
+	position: absolute;
+	margin-left: 10px;
+	padding-left: 50px; 
+	max-width: 80%;
+	top: 0;
+}
+
+.addEntry{
+	color: #fff;
+	border: 0;
+}
