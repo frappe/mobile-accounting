@@ -1,5 +1,4 @@
 import frappe from 'frappejs';
-
 import common from 'frappejs/common';
 import models from 'frappejs/models';
 import HTTPClient from 'frappejs/backends/http';

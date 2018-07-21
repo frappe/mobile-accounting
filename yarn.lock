@@ -72,21 +72,21 @@
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.7.0.tgz#9e7c13db9f18f454d7a31a5d61d369a7db3f338c"
 
-"@ionic-native/splash-screen@4.7.0":
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.7.0.tgz#e22c41e986cfc5e8ff12db7fc464c2daf9206037"
+"@ionic-native/splash-screen@^4.7.0":
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.9.2.tgz#fe4f6fd8ece9b3c872f7ba9f312469d709475d77"
 
-"@ionic-native/sqlite-porter@^4.9.1":
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/sqlite-porter/-/sqlite-porter-4.9.1.tgz#cdecb55d2e7c75699913f1c7762034c74ecac441"
+"@ionic-native/sqlite-porter@^4.9.2":
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/sqlite-porter/-/sqlite-porter-4.9.2.tgz#0932a7c2324001520b2f30fd2f1cfa8ba893af54"
 
-"@ionic-native/sqlite@^4.9.1":
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/sqlite/-/sqlite-4.9.1.tgz#40728acdba3585248d58d464b9237dff4aa608a4"
+"@ionic-native/sqlite@^4.9.2":
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/sqlite/-/sqlite-4.9.2.tgz#6e7f7e809acedf8d5f893d206e8a7e6af4f27540"
 
-"@ionic-native/status-bar@4.7.0":
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.7.0.tgz#f292bf67c2d5fef43b1fc7b442f5bc75139cc8e3"
+"@ionic-native/status-bar@^4.7.0":
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.9.2.tgz#92bbf7e5a8946cbf02dbed6dec29108f6b71d7ad"
 
 "@ionic/app-scripts@3.1.9":
   version "3.1.9"
@@ -123,7 +123,7 @@
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/@ionic/pro/-/pro-1.0.20.tgz#5f58386260b38caa417a06078255440409b182ca"
 
-"@ionic/storage@2.1.3":
+"@ionic/storage@^2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@ionic/storage/-/storage-2.1.3.tgz#05dcf396a759879bf7aea42cfed61519562a13c7"
   dependencies:
@@ -912,6 +912,10 @@ chardet@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
 
+child_process@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/child_process/-/child_process-1.0.2.tgz#b1f7e7fc73d25e7fd1d455adc94e143830182b5a"
+
 chokidar@^1.4.2, chokidar@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
@@ -1196,7 +1200,7 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
 
-cordova-android@^7.0.0:
+cordova-android@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/cordova-android/-/cordova-android-7.1.0.tgz#1cd36ee7b9d19bad50d3e9842b731fe590924dd5"
   dependencies:
@@ -1239,6 +1243,10 @@ cordova-plugin-ionic-webview@^1.1.19:
 cordova-plugin-splashscreen@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-5.0.2.tgz#747e74f56e201cd585bc62d14bca19f6867ff1ed"
+
+cordova-plugin-statusbar@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-statusbar/-/cordova-plugin-statusbar-2.4.2.tgz#fc1fbdc0d8d7033a7e8e1f1f7ff167ac9bd4faf6"
 
 cordova-plugin-whitelist@^1.3.3:
   version "1.3.3"

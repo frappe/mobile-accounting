@@ -6,15 +6,19 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/Rx';
+import frappe from 'frappejs';
+import sqliteDatabase from 'frappejs/backends/sqlite';
+import child_process = require();
 
 @Injectable()
-export class DatabaseProvider {
+export class DatabaseProvider extends sqliteDatabase{
   database: SQLiteObject;
   owner:string='Administrator';
   date:string;
   private databaseReady: BehaviorSubject<boolean>;
 
   constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform) {
+    super();
     this.databaseReady = new BehaviorSubject(false);
     this.platform.ready().then(() => {
       this.sqlite.create({
@@ -35,7 +39,8 @@ export class DatabaseProvider {
     });
   }
 
-  fillDatabase() {
+  fillDatabase(){
+    //print(temp);
     this.http.get('assets/tables.sql')
     .map(res => res.text())
     .subscribe(sql => {
