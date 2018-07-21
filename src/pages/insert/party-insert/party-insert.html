@@ -6,14 +6,14 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{title}}-Insert</ion-title>
+    <ion-title>Add {{title}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
   <ion-item *ngIf="valid">
-    <ion-label color="col1" floating>Name</ion-label>
+    <ion-label color="dark" floating>Name</ion-label>
     <ion-input type="text" value="{{cust_name}}" clearInput [(ngModel)]="party.name"></ion-input>
   </ion-item>
   <ion-item *ngIf="!valid">
@@ -35,6 +35,6 @@
 </ion-list> -->
 
 <div style="padding:10px;text-align:center">
-  <button round color="col1" ion-button (click)="party_done()">Save</button>
+  <button class="save" ion-button (click)="party_done()"><ion-icon name="checkmark"></ion-icon></button>
 </div>
 </ion-content>

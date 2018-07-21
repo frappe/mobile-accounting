@@ -40,6 +40,7 @@ export class ItemEditPage {
     this.unit_list = {'Kg':0,'Gram':1,'Hour':2,'Day':3};
     this.item_unit = [false,false,false,false];
     this.item_unit[this.unit_list[temp]] = true;
+    this.unit = temp;
     console.log(this.item_description);
   }
 

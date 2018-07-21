@@ -3,7 +3,7 @@
     <name>Mobile Accounting</name>
     <description>An Accounting app.</description>
     <author email="hello@erpnext.com" href="https://erpnext.com">Frappe Technologies Private Limited</author>
-    <content src="index.html" />
+    <content original-src="index.html"/>
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -80,12 +80,10 @@
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="1.1.19" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
-    <allow-navigation href="http://192.168.29.48:8100" />
-    <allow-navigation href="http://192.168.0.105:8100" />
-    <allow-navigation href="http://192.168.29.208:8100" />
+
     <plugin name="uk.co.workingedge.cordova.plugin.sqliteporter" spec="^1.0.5" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
-    <engine name="android" spec="~7.1.0" />
+    <engine name="android" spec="7.1.1" />
 </widget>
