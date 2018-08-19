@@ -7,19 +7,21 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/Rx';
 import frappe from 'frappejs';
-import sqliteDatabase from 'frappejs/backends/sqlite';
-import child_process = require();
+import IonicSqlite from 'frappejs/backends/ionicsqlite';
 
 @Injectable()
-export class DatabaseProvider extends sqliteDatabase{
+export class DatabaseProvider{
   database: SQLiteObject;
   owner:string='Administrator';
   date:string;
+  t:any;
   private databaseReady: BehaviorSubject<boolean>;
+  frappe:any;
 
   constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform) {
-    super();
+    //super();
     this.databaseReady = new BehaviorSubject(false);
+    this.frappe = new IonicSqlite();
     this.platform.ready().then(() => {
       this.sqlite.create({
         name: 'test.db',
@@ -40,7 +42,6 @@ export class DatabaseProvider extends sqliteDatabase{
   }
 
   fillDatabase(){
-    //print(temp);
     this.http.get('assets/tables.sql')
     .map(res => res.text())
     .subscribe(sql => {
@@ -54,12 +55,14 @@ export class DatabaseProvider extends sqliteDatabase{
   }
 
 // <------ Items ------->
-
-  addItem(name,description,unit,rate) {
+  addItem(list,num) {
     this.date = JSON.stringify(new Date());
-    let data = [this.owner,this.owner,this.date,this.date,name,description,unit,rate];
+    var x = '?, ';
+    var y = x.repeat(12);
+    console.log(y);
+    let data = [this.owner,this.owner,this.date,this.date,'',list['name'],list['description'],list['unit'],'','','',list['rate']];
     console.log('insert data: ', data);
-    return this.database.executeSql("INSERT INTO Item (owner,modifiedBy,creation,modified,name,description,unit,rate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", data).then(res => {
+    return this.database.executeSql("INSERT INTO Item VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, )", data).then(res => {
       return res;
     })
     .catch(err => {

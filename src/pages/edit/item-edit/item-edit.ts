@@ -28,6 +28,7 @@ export class ItemEditPage {
   item_rate:any;
   item_description:any;
   unit_list:Object;
+  list:{};
   item_unit:Array<Boolean>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
@@ -80,7 +81,11 @@ export class ItemEditPage {
       //item deleted
     });
     //let temp = {'name':this.name,'description':this.description,'unit':this.unit,'rate':this.rate};
-    this.databaseProvider.addItem(this.name, this.description, this.unit,this.rate)
+    this.list['name'] = this.name;
+    this.list['description'] = this.description;
+    this.list['unit'] = this.unit;
+    this.list['rate'] = this.rate;
+    this.databaseProvider.addItem(this.list,12)
     .then(data => {
        this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
     });

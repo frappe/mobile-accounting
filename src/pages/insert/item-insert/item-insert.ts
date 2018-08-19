@@ -64,7 +64,7 @@ export class ItemInsertPage {
   // }
 
   addItem() {
-    this.databaseProvider.addItem(this.item['name'], this.item['description'], this.item['unit'],this.item['rate'])
+    this.databaseProvider.addItem(this.item,12)
     .then(data => {
        this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
     });
