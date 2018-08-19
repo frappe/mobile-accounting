@@ -66,7 +66,7 @@ export class DatabaseProvider{
     for (var i in list){
       this.data.push(list[i]);  //remaining values
     }
-    this.frappe.print();
+    //this.frappe.print();
     console.log(this.data);
     return this.frappe.addOne(doctype,this.data,num,this.database);
   }
@@ -75,22 +75,18 @@ export class DatabaseProvider{
     return this.frappe.getAll(doctype,this.database);
   }
 
-  deleteItem(old_name){
-    return this.database.executeSql("DELETE FROM Item WHERE name=?",[old_name])
-    .then(res => {
-      return res;
-    })
-    .catch(err => {
-      console.log('error: ', err);
-    });
+  deleteItem(doctype,old_name){
+    return this.frappe.deleteOne(doctype,old_name,this.database);
   }
 
-  getItem(name){
+  getItem(doctype,name){
     //console.log(name);
-    return this.database.executeSql('SELECT * FROM Item WHERE name=?',[name])
+    //return this.frappe.getOne(doctype,name,this.database);
+    return this.database.executeSql(`SELECT * FROM ${doctype} WHERE name=?`,[name])
     .then(data => {
       //console.log(data.rows.length);
-      let temp = {name: data.rows.item(0).name, description: data.rows.item(0).description, unit: data.rows.item(0).unit,rate: data.rows.item(0).rate};
+      let temp = data.rows.item(0);
+      console.log("One value received");
       return temp;
     })
     .catch(err => {

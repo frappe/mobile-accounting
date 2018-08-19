@@ -74,7 +74,7 @@ export class ItemEditPage {
 
   updateItem(){
     //await this.frappe.db.delete('Item',this.item_name);
-    this.databaseProvider.deleteItem(this.item_name)
+    this.databaseProvider.deleteItem('Item',this.item_name)
     .then(data => {
       //item deleted
     });

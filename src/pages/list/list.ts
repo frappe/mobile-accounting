@@ -100,7 +100,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     }
     else if(this.docname == 'Item'){
       //await this.frappe.db.delete('Item',this.curr_name);
-      this.databaseProvider.deleteItem(curr_name)
+      this.databaseProvider.deleteItem('Item',curr_name)
       .then(data => {
         this.loadItemsData();
       });
