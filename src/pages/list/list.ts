@@ -58,7 +58,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   }
 
   loadItemsData() {
-    this.databaseProvider.getAllItems().then(data => {
+    this.databaseProvider.getAllItems('Item').then(data => {
       this.list = data;
     });
   }

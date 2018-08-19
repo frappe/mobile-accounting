@@ -24,7 +24,7 @@ export class DatabaseProvider{
     this.data = ['Administrator','Administrator']
     this.databaseReady = new BehaviorSubject(false);
     this.frappe = new IonicSqlite();
-    this.frappe.print();
+    //this.frappe.print();
     this.platform.ready().then(() => {
       this.sqlite.create({
         name: 'test.db',
@@ -71,19 +71,8 @@ export class DatabaseProvider{
     return this.frappe.addOne(doctype,this.data,num,this.database);
   }
 
-  getAllItems() {
-    return this.database.executeSql("SELECT * FROM Item", []).then(data => {
-      let items = [];
-      if (data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
-          items.push({name: data.rows.item(i).name, description: data.rows.item(i).description, unit: data.rows.item(i).unit,rate: data.rows.item(i).rate});
-        }
-      }
-      return items;
-    }, err => {
-      console.log('Error: ', err);
-      return [];
-    })
+  getAllItems(doctype) {
+    return this.frappe.getAll(doctype,this.database);
   }
 
   deleteItem(old_name){
