@@ -51,12 +51,12 @@ export class PartyInsertPage {
     // if(this.customer) this.act_customer=1; else this.act_customer = 0;
     // if(this.supplier) this.act_supplier=1; else this.act_supplier = 0;
     if(this.title == 'Customers')
-      this.databaseProvider.addParty(this.party['name'],1,0)
+      this.databaseProvider.addOne('Party',[this.party['name'],1,0],8)
       .then(data => {
         this.navigate();
       });
     else if(this.title == 'Suppliers')
-      this.databaseProvider.addParty(this.party['name'],0,1)
+      this.databaseProvider.addOne('Party',[this.party['name'],0,1],8)
       .then(data => {
         this.navigate();
       });

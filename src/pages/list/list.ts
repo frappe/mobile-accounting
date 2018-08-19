@@ -58,19 +58,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   }
 
   loadItemsData() {
-    this.databaseProvider.getAllItems('Item').then(data => {
+    this.databaseProvider.getAll('Item','1').then(data => {
       this.list = data;
     });
   }
 
   loadCustomersData() {
-    this.databaseProvider.getAllCustomers().then(data => {
+    this.databaseProvider.getAll('Party','customer=1').then(data => {
       this.list = data;
     });
   }
 
   loadSuppliersData() {
-    this.databaseProvider.getAllSuppliers().then(data => {
+    this.databaseProvider.getAll('Party','supplier=1').then(data => {
       this.list = data;
     });
   }
@@ -82,7 +82,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     }
     else if(this.docname == 'Item'){
       //let temp = await this.frappe.db.get('Item',curr_name);
-      this.databaseProvider.getItem(curr_name)
+      this.databaseProvider.getOne('Item',curr_name)
       .then(data => {
         let temp = data;
         console.log(temp['rate']);
@@ -93,14 +93,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   delete(curr_name) {
     console.log(curr_name,this.docname);
     if(this.docname == 'Party'){
-      this.databaseProvider.deleteParty(curr_name)
+      this.databaseProvider.deleteOne('Party',curr_name)
       .then(data => {
         this.loadCustomersData();
       });
     }
     else if(this.docname == 'Item'){
       //await this.frappe.db.delete('Item',this.curr_name);
-      this.databaseProvider.deleteItem('Item',curr_name)
+      this.databaseProvider.deleteOne('Item',curr_name)
       .then(data => {
         this.loadItemsData();
       });

@@ -58,19 +58,19 @@ export class PartyEditPage {
 
   updateParty() {
     if(this.customer){
-      this.databaseProvider.deleteParty(this.cust_name)
+      this.databaseProvider.deleteOne('Party',this.cust_name)
       .then(data => {
       });
-      this.databaseProvider.addParty(this.name,1,0)
+      this.databaseProvider.addOne('Party',[this.name,1,0],8)
       .then(data => {
       this.navigate();
       });
     }
     if(this.supplier){
-      this.databaseProvider.deleteParty(this.cust_name)
+      this.databaseProvider.deleteOne('Party',this.cust_name)
       .then(data => {
       });
-      this.databaseProvider.addParty(this.name,0,1)
+      this.databaseProvider.addOne('Party',[this.name,0,1],8)
       .then(data => {
       this.navigate();
       });

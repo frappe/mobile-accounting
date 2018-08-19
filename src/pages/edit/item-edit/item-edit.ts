@@ -74,7 +74,7 @@ export class ItemEditPage {
 
   updateItem(){
     //await this.frappe.db.delete('Item',this.item_name);
-    this.databaseProvider.deleteItem('Item',this.item_name)
+    this.databaseProvider.deleteOne('Item',this.item_name)
     .then(data => {
       //item deleted
     });
@@ -84,7 +84,7 @@ export class ItemEditPage {
     // this.list['unit'] = this.unit;
     // this.list['rate'] = this.rate;
     let list = [this.name,this.description,this.unit,'','','',this.rate];
-    this.databaseProvider.addItem('Item',list,12)
+    this.databaseProvider.addOne('Item',list,12)
     .then(data => {
        this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
     });

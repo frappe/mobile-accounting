@@ -66,7 +66,7 @@ export class ItemInsertPage {
   addItem() {
     //name,description, unit, incomeAccount, expenseAccount, tax, rate
     let list = [this.item['name'],this.item['description'],this.item['unit'],'','','',this.item['rate']];
-    this.databaseProvider.addItem('Item',list,12)
+    this.databaseProvider.addOne('Item',list,12)
     .then(data => {
        this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
     });

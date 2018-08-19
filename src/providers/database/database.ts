@@ -58,7 +58,7 @@ export class DatabaseProvider{
   }
 
 // <------ Items ------->
-  addItem(doctype,list,num) {
+  addOne(doctype,list,num) {
     this.date = JSON.stringify(new Date());
     this.data.push(this.date);  // creation
     this.data.push(this.date);  //modifiedBy
@@ -71,92 +71,81 @@ export class DatabaseProvider{
     return this.frappe.addOne(doctype,this.data,num,this.database);
   }
 
-  getAllItems(doctype) {
-    return this.frappe.getAll(doctype,this.database);
+  getAll(doctype,condition) {
+    return this.frappe.getAll(doctype,condition,this.database);
   }
 
-  deleteItem(doctype,old_name){
+  deleteOne(doctype,old_name){
     return this.frappe.deleteOne(doctype,old_name,this.database);
   }
 
-  getItem(doctype,name){
-    //console.log(name);
-    //return this.frappe.getOne(doctype,name,this.database);
-    return this.database.executeSql(`SELECT * FROM ${doctype} WHERE name=?`,[name])
-    .then(data => {
-      //console.log(data.rows.length);
-      let temp = data.rows.item(0);
-      console.log("One value received");
-      return temp;
-    })
-    .catch(err => {
-      console.log('error: ',err);
-    });
+  getOne(doctype,name){
+    return this.frappe.getOne(doctype,name,this.database);
   }
 
 //   <------ Items End ------>
 
 //  <------- Party ------->
 
-  addParty(name,customer,supplier) {
-    this.date = JSON.stringify(new Date());
-    let data = [this.owner,this.owner,this.date,this.date,name,customer,supplier];
-    console.log('insert data: ', data);
-    return this.database.executeSql("INSERT INTO Party (owner,modifiedBy,creation,modified,name,customer,supplier) VALUES (?, ?, ?, ?, ?, ?, ?)", data).then(res => {
-      return res;
-    })
-    .catch(err => {
-      console.log('error: ', err);
-    });
-  }
-
-  deleteParty(old_name){
-    return this.database.executeSql("DELETE FROM Party WHERE name=?",[old_name])
-    .then(res => {
-      return res;
-    })
-    .catch(err => {
-      console.log('error: ', err);
-    });
-  }
-
-//  <------- Party End ------->
-
-//   <------ Customers ------->
-
-  getAllCustomers() {
-    return this.database.executeSql("SELECT * FROM Party where customer=1 ", []).then(data => {
-      let items = [];
-      if (data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
-          items.push({name: data.rows.item(i).name});
-        }
-      }
-      return items;
-    }, err => {
-      console.log('Error: ', err);
-      return [];
-    })
-  }
-
-//  <------- Customers End ------->
-
-//  <------- Suppliers ------->
-
-  getAllSuppliers() {
-    return this.database.executeSql("SELECT * FROM Party where supplier=1 ", []).then(data => {
-      let items = [];
-      if (data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
-          items.push({name: data.rows.item(i).name});
-        }
-      }
-      return items;
-    }, err => {
-      console.log('Error: ', err);
-      return [];
-    })
-  }
+//   addParty(name,customer,supplier) {
+//     this.date = JSON.stringify(new Date());
+//     let data = [this.owner,this.owner,this.date,this.date,name,customer,supplier];
+//     console.log('insert data: ', data);
+//     return this.database.executeSql("INSERT INTO Party (owner,modifiedBy,creation,modified,name,customer,supplier) VALUES (?, ?, ?, ?, ?, ?, ?)", data).then(res => {
+//       return res;
+//     })
+//     .catch(err => {
+//       console.log('error: ', err);
+//     });
+//   }
+//
+//   deleteParty(old_name){
+//     return this.database.executeSql("DELETE FROM Party WHERE name=?",[old_name])
+//     .then(res => {
+//       return res;
+//     })
+//     .catch(err => {
+//       console.log('error: ', err);
+//     });
+//   }
+//
+// //  <------- Party End ------->
+//
+// //   <------ Customers ------->
+//
+//   getAllCustomers() {
+//     return this.database.executeSql("SELECT * FROM Party where customer=1 ", []).then(data => {
+//       let items = [];
+//       if (data.rows.length > 0) {
+//         for (var i = 0; i < data.rows.length; i++) {
+//           items.push({name: data.rows.item(i).name});
+//         }
+//       }
+//       return items;
+//     }, err => {
+//       console.log('Error: ', err);
+//       return [];
+//     })
+//   }
+//
+// //  <------- Customers End ------->
+//
+// //  <------- Suppliers ------->
+//
+//   getAllSuppliers() {
+//     return this.database.executeSql("SELECT * FROM Party where supplier=1 ", []).then(data => {
+//       let items = [];
+//       if (data.rows.length > 0) {
+//         for (var i = 0; i < data.rows.length; i++) {
+//           items.push({name: data.rows.item(i).name});
+//         }
+//       }
+//       return items;
+//     }, err => {
+//       console.log('Error: ', err);
+//       return [];
+//     })
+//   }
 
 //  <------- Suppliers End ------->
 
