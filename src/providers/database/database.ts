@@ -17,11 +17,14 @@ export class DatabaseProvider{
   t:any;
   private databaseReady: BehaviorSubject<boolean>;
   frappe:any;
+  data = [];
 
   constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform) {
     //super();
+    this.data = ['Administrator','Administrator']
     this.databaseReady = new BehaviorSubject(false);
     this.frappe = new IonicSqlite();
+    this.frappe.print();
     this.platform.ready().then(() => {
       this.sqlite.create({
         name: 'test.db',
@@ -55,19 +58,17 @@ export class DatabaseProvider{
   }
 
 // <------ Items ------->
-  addItem(list,num) {
+  addItem(doctype,list,num) {
     this.date = JSON.stringify(new Date());
-    var x = '?, ';
-    var y = x.repeat(12);
-    console.log(y);
-    let data = [this.owner,this.owner,this.date,this.date,'',list['name'],list['description'],list['unit'],'','','',list['rate']];
-    console.log('insert data: ', data);
-    return this.database.executeSql("INSERT INTO Item VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, )", data).then(res => {
-      return res;
-    })
-    .catch(err => {
-      console.log('error: ', err);
-    });
+    this.data.push(this.date);  // creation
+    this.data.push(this.date);  //modifiedBy
+    this.data.push('');  //keywords
+    for (var i in list){
+      this.data.push(list[i]);  //remaining values
+    }
+    this.frappe.print();
+    console.log(this.data);
+    return this.frappe.addOne(doctype,this.data,num,this.database);
   }
 
   getAllItems() {
