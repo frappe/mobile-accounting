@@ -23,14 +23,13 @@ export class ItemEditPage {
   @Input() rate;
   valid2:Boolean;
   @Input() description;
-  //frappe:any;
   item_name:any;
   item_rate:any;
   item_description:any;
   unit_list:Object;
   item_unit:Array<Boolean>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private databaseProvider: DatabaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public databaseProvider: DatabaseProvider) {
     this.valid = true;
     this.valid2 = true;
     this.item_name = this.navParams.get('item_name');
@@ -75,12 +74,17 @@ export class ItemEditPage {
 
   updateItem(){
     //await this.frappe.db.delete('Item',this.item_name);
-    this.databaseProvider.deleteItem(this.item_name)
+    this.databaseProvider.deleteOne('Item',this.item_name)
     .then(data => {
       //item deleted
     });
     //let temp = {'name':this.name,'description':this.description,'unit':this.unit,'rate':this.rate};
-    this.databaseProvider.addItem(this.name, this.description, this.unit,this.rate)
+    // this.list['name'] = this.name;
+    // this.list['description'] = this.description;
+    // this.list['unit'] = this.unit;
+    // this.list['rate'] = this.rate;
+    let list = [this.name,this.description,this.unit,'','','',this.rate];
+    this.databaseProvider.addOne('Item',list,12)
     .then(data => {
        this.navCtrl.push(ListPage,{'pageTitle':'Items','docname':'Item'});
     });

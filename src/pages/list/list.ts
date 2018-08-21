@@ -21,6 +21,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  export class ListPage {
    list = [];
    pageTitle:any;
+   frappe:any;
    docname:any;
    valid:Boolean;
   //frappe:any;
@@ -28,23 +29,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     this.valid=true;
     this.pageTitle = this.navParams.get('pageTitle');
     this.docname = this.navParams.get('docname');
-    this.databaseProvider.getDatabaseState().subscribe(rdy => {
-      if (rdy) {
-        this.loadlist();
-      }
-    });
+    // this.databaseProvider.getDatabaseState().subscribe(rdy => {
+    //   if (rdy) {
+    //     this.loadlist();
+    //   }
+    // });
   }
 
   ionViewDidLoad() {
+    this.frappe = (<any>window).frappe;
+    this.loadlist();
     console.log('ionViewDidLoad ListPage');
   }
 
   loadlist(){
     //this.frappe = (<any>window).frappe;
     if(this.pageTitle == 'Customers'){
-      this.loadCustomersData();
+      //this.loadCustomersData();
       this.valid=false;
+      //this.frappe.db.text();
       //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{customer:['like','1']}});
+      //this.list = temp;
+      //console.log(temp);
     }
     else if(this.pageTitle == 'Suppliers'){
       this.loadSuppliersData();
@@ -58,19 +64,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   }
 
   loadItemsData() {
-    this.databaseProvider.getAllItems().then(data => {
+    this.databaseProvider.getAll('Item','1').then(data => {
       this.list = data;
     });
   }
 
   loadCustomersData() {
-    this.databaseProvider.getAllCustomers().then(data => {
+    this.databaseProvider.getAll('Party','customer=1').then(data => {
       this.list = data;
     });
   }
 
   loadSuppliersData() {
-    this.databaseProvider.getAllSuppliers().then(data => {
+    this.databaseProvider.getAll('Party','supplier=1').then(data => {
       this.list = data;
     });
   }
@@ -82,7 +88,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     }
     else if(this.docname == 'Item'){
       //let temp = await this.frappe.db.get('Item',curr_name);
-      this.databaseProvider.getItem(curr_name)
+      this.databaseProvider.getOne('Item',curr_name)
       .then(data => {
         let temp = data;
         console.log(temp['rate']);
@@ -93,14 +99,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   delete(curr_name) {
     console.log(curr_name,this.docname);
     if(this.docname == 'Party'){
-      this.databaseProvider.deleteParty(curr_name)
+      this.databaseProvider.deleteOne('Party',curr_name)
       .then(data => {
         this.loadCustomersData();
       });
     }
     else if(this.docname == 'Item'){
       //await this.frappe.db.delete('Item',this.curr_name);
-      this.databaseProvider.deleteItem(curr_name)
+      this.databaseProvider.deleteOne('Item',curr_name)
       .then(data => {
         this.loadItemsData();
       });
