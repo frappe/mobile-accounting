@@ -85,4 +85,7 @@
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <engine name="android" spec="7.1.1" />
+    <allow-navigation href="http://192.168.0.105:8100" />
+    <plugin name="cordova-plugin-filepath" spec="^1.4.2" />
+    <allow-navigation href="http://192.168.29.208:8100" />
 </widget>

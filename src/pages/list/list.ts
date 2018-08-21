@@ -21,6 +21,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  export class ListPage {
    list = [];
    pageTitle:any;
+   frappe:any;
    docname:any;
    valid:Boolean;
   //frappe:any;
@@ -28,23 +29,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     this.valid=true;
     this.pageTitle = this.navParams.get('pageTitle');
     this.docname = this.navParams.get('docname');
-    this.databaseProvider.getDatabaseState().subscribe(rdy => {
-      if (rdy) {
-        this.loadlist();
-      }
-    });
+    // this.databaseProvider.getDatabaseState().subscribe(rdy => {
+    //   if (rdy) {
+    //     this.loadlist();
+    //   }
+    // });
   }
 
   ionViewDidLoad() {
+    this.frappe = (<any>window).frappe;
+    this.loadlist();
     console.log('ionViewDidLoad ListPage');
   }
 
   loadlist(){
     //this.frappe = (<any>window).frappe;
     if(this.pageTitle == 'Customers'){
-      this.loadCustomersData();
+      //this.loadCustomersData();
       this.valid=false;
+      this.frappe.db.text();
       //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{customer:['like','1']}});
+      //this.list = temp;
+      //console.log(temp);
     }
     else if(this.pageTitle == 'Suppliers'){
       this.loadSuppliersData();
