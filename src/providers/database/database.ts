@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/Rx';
 import frappe from 'frappejs';
 //import IonicSqlite from 'frappejs/backends/ionicsqlite';
-import { FilePath } from '@ionic-native/file-path';
 
 @Injectable()
 export class DatabaseProvider{
@@ -20,7 +19,7 @@ export class DatabaseProvider{
   frappe:any;
   data = [];
 
-  constructor(public filePath: FilePath, public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform) {
+  constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform) {
     //super();
     this.data = ['Administrator','Administrator']
     this.databaseReady = new BehaviorSubject(false);
@@ -43,9 +42,6 @@ export class DatabaseProvider{
         this.fillDatabase();
       });
     });
-    this.filePath.resolveNativePath('')
-    .then(filePath => console.log("File is :"+filePath))
-    .catch(err => console.log(err));
   }
 
   fillDatabase(){

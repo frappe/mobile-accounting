@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import initFrappe from '../frappe';
 
-import { FilePath } from '@ionic-native/file-path';
 import { SQLite } from '@ionic-native/sqlite';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 
@@ -51,7 +50,6 @@ import { ItemInsertPage } from '../pages/insert/item-insert/item-insert';
     ItemEditPage
   ],
   providers: [
-    FilePath,
     StatusBar,
     SplashScreen,
     SQLite,

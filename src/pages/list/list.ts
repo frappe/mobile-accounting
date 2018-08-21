@@ -47,7 +47,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     if(this.pageTitle == 'Customers'){
       //this.loadCustomersData();
       this.valid=false;
-      this.frappe.db.text();
+      //this.frappe.db.text();
       //var temp = await this.frappe.db.getAll({doctype:this.docname,fields:['name'],filters:{customer:['like','1']}});
       //this.list = temp;
       //console.log(temp);
